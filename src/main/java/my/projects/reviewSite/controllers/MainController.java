@@ -16,14 +16,7 @@ public class MainController {
 
     @GetMapping("/")
     public String Main(Model model) {
-        model.addAttribute("posts", postService.findAllPosts());
         model.addAttribute("title", "Review Site");
         return "main";
-    }
-
-    @PostMapping("/")
-    public String deletePost(@RequestParam Long id) {
-        postService.deletePost(id);
-        return "redirect:/";
     }
 }
