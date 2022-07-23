@@ -1,6 +1,7 @@
 package my.projects.reviewSite.controllers;
 
 import lombok.AllArgsConstructor;
+import my.projects.reviewSite.models.Post;
 import my.projects.reviewSite.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
