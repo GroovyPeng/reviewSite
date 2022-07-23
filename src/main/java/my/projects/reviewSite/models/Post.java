@@ -19,8 +19,9 @@ public class Post {
 
     private String title;
     private String theme;
+    @Column(columnDefinition = "varchar(255)")
     private String preview;
-    @Column(columnDefinition = "TEXT default '*Текст отсутствует*'")
+    @Column(columnDefinition = "TEXT")
     private String text;
 
     public Post(String title, String theme, String text) {
