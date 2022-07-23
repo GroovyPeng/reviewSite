@@ -19,7 +19,6 @@ public class Post {
 
     private String title;
     private String theme;
-    @Column(columnDefinition = "varchar(90) default '*Текст отсутствует*'")
     private String preview;
     @Column(columnDefinition = "TEXT default '*Текст отсутствует*'")
     private String text;
@@ -27,7 +26,7 @@ public class Post {
     public Post(String title, String theme, String text) {
         this.title = title;
         this.theme = theme;
-        this.preview = text.length() >= 90 ? text.substring(0, 90) : text;
+        this.preview = (text.length() >= 90 ? text.substring(0, 90) : text) + "...";
         this.text = text;
     }
 
