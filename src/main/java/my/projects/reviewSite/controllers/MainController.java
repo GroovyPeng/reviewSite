@@ -1,7 +1,6 @@
 package my.projects.reviewSite.controllers;
 
 import lombok.AllArgsConstructor;
-import my.projects.reviewSite.models.Post;
 import my.projects.reviewSite.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +15,6 @@ public class MainController {
 
     @GetMapping("/")
     public String Main(Model model) {
-        Iterable<Post> posts = postService.findAllPosts();
-        for (Post post : posts) {
-            String postText = post.getText();
-            post.setPreview((postText.length() >= 90 ? postText.substring(0, 90) : postText) + "...");
-            postService.savePost(post);
-        }
         model.addAttribute("posts", postService.findAllPosts());
         model.addAttribute("title", "Review Site");
         return "main";

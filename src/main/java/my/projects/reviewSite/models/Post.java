@@ -19,7 +19,6 @@ public class Post {
 
     private String title;
     private String theme;
-    @Column(columnDefinition = "varchar(255)")
     private String preview;
     @Column(columnDefinition = "TEXT")
     private String text;
