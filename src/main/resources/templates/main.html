@@ -56,7 +56,7 @@
                     <strong class="d-inline-block mb-2 text-success" th:text="${post.theme}"></strong>
                     <h3 class="mb-0" th:text="${post.title}"></h3>
                     <div class="mb-1 text-muted">Nov 11</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <p class="mb-auto" th:text="${post.preview}"></p>
                     <a th:href="'/' + ${post.theme} + '/' + ${post.id}" class="">Continue reading</a>
                     <form method="post">
                         <button class="btn btn-outline-danger" type="submit" name="id" th:value="${post.id}">Delete</button>
