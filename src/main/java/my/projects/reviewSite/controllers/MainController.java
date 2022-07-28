@@ -18,11 +18,6 @@ public class MainController {
 
     @GetMapping("/")
     public String Main(Model model) {
-        for (Post post : postService.findAllPosts()) {
-            post.setDate(new Date());
-            postService.savePost(post);
-        }
-
         model.addAttribute("posts", postService.findAllPosts());
         model.addAttribute("title", "Review Site");
         return "main";
