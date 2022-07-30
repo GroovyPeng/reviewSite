@@ -77,7 +77,7 @@
                     <div class="mb-1 text-muted" th:text="${#dates.format(post.date, 'dd MMMM yyyy')} + ' в ' + ${#dates.format(post.date, 'HH:mm')}"></div>
                     <p class="mb-auto" th:text="${post.preview}"></p>
                     <a th:href="'/' + ${post.theme} + '/' + ${post.id}" class="">Continue reading</a>
-                    <form th:action="@{/}" method="post">
+                    <form sec:authorize="isAuthenticated()" th:action="@{/}" method="post">
                         <button class="btn btn-outline-danger" type="submit" name="id" th:value="${post.id}">Delete</button>
                     </form>
 
