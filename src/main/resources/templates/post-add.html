@@ -9,7 +9,7 @@
 <main class="container">
     <div class="p-4 p-md-5 mb-4">
         <a class="btn btn-outline-secondary mb-4" href="/">Назад</a>
-        <form method="post">
+        <form th:action="@{/post-add}"method="post">
             <div class="row">
                 <input class="form-control mb-2" type="text" name="title" placeholder="Заголовок">
                 <input class="form-control mb-2" type="text" name="theme" placeholder="Тема">

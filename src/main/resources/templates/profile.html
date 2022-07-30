@@ -6,7 +6,7 @@
 <div class="container">
     <header th:insert="blocks/navigation :: nav"></header>
     <main class="container">
-        <div th:text="${username}"></div>
+        <p>Имя пользователя: <span sec:authentication="name"></span></p>
     </main>
 </div>
 

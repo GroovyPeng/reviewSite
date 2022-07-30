@@ -23,14 +23,14 @@ public class Post {
     private String preview;
     @Column(columnDefinition = "TEXT")
     private String text;
-    private Date date = new Date();
+    private Date date;
 
     public Post(String title, String theme, String text) {
         this.title = title;
         this.theme = theme;
         this.preview = text.length() >= 90 ? text.substring(0, 90) + "..." : text ;
         this.text = text;
-        System.out.println("text = null? " + (text.length() == 0));
+        this.date = new Date();
     }
 
     @Override
