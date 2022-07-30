@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="blocks/head :: head"></head>
+<body>
+
+<div class="container">
+    <header th:insert="blocks/navigation :: nav"></header>
+    <main class="container">
+        <div th:text="${username}"></div>
+    </main>
+</div>
+
+</body>
+</html>
