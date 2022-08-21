@@ -3,12 +3,10 @@ package my.projects.reviewSite.controllers;
 import lombok.AllArgsConstructor;
 import my.projects.reviewSite.models.Post;
 import my.projects.reviewSite.services.PostService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -18,12 +16,14 @@ public class PostController {
     final private PostService postService;
 
     @GetMapping("/post-add")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public String postAdd(Model model) {
         model.addAttribute("title", "Добавление поста");
         return "post-add";
     }
 
     @PostMapping("/post-add")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public String newPost(
             @RequestParam String title,
             @RequestParam String theme,
