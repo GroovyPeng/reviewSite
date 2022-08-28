@@ -12,6 +12,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+import java.util.concurrent.TimeUnit;
 
 import static my.projects.reviewSite.models.UserRole.*;
 
@@ -34,12 +37,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**","/css/**","/js/**").permitAll()
             .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
+                .loginPage("/login").permitAll()
+            .and()
+                .rememberMe()
+                    .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30))
+                    .key("somethingverysecured")
             .and()
                 .logout()
-                .logoutSuccessUrl("/")
-                .permitAll();
+                    .clearAuthentication(true)      // TODO: Узнать что это
+                    .invalidateHttpSession(true)    // TODO: Узнать что это
+                    .deleteCookies("JSESSIONID", "remember-me")
+                    .logoutSuccessUrl("/");
     }
 
     @Bean
